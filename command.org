@@ -1,0 +1,45 @@
+* Start
+  run next program
+  clear all watch point
+  clear all break point
+* Compile
+  gcc -g -o filename.c output_bin
+* Breakpoint
+** create breakpoint
+   | b | break | b main ... b 13 |
+** delete breakpoint
+   | disable | disable all breakpoint|
+
+* Continue
+  run silent skip util hit next breakpoint
+* Step: (1 of instruction)
+  step: go to next instruction include instruction of call function 
+* Next: go in current code
+  next: run function silent in current code continue step through
+
+
+* Show values , variables
+  | p variable     | print variable                                   |
+  | info locals    | print all variable                               |
+  | x variable     | show variable's address and raw byte value       |
+  | x/b variable   | Examine memory location                          |
+  | x/10b variable | Examine memory location                          |
+  | watch variable | watch variables change in step or next           |
+  | info watch     | info all watch point and hardware watch (rwatch) |
+* Backtrace ( when in subroutine-child function) 
+** call before call like stacktrace
+| bt | backtrace |
+** call previous variables in back function
+|frame 1| 
+* set variables value:
+set var variables = value
+* 
+
+ break iter.c:6 if i == 5
+
+You can use a watchpoint for this (A breakpoint on data instead of code).
+
+You can start by using watch i.
+Then set a condition for it using condition <breakpoint num> i == 5
+
+You can get the breakpoint number by using info watch
