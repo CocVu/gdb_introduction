@@ -1,0 +1,36 @@
+$ gcc -Wall -g -ggdb -o ex1 ex1.c
+
+  $ gdb ./ex1
+
+  (gdb) list
+  1 #include <stdio.h>
+  2 int main(void)
+  3 { 
+  4   int i = 0;
+  5   for(i=0;i<7;++i)
+  6     printf("%d\n", i);
+  7 
+  8   return 0;
+  9 }
+  (gdb) b 5
+  Breakpoint 1 at 0x4004fb: file ex1.c, line 5.
+  (gdb) rwatch i if i==5
+  Hardware read watchpoint 5: i
+  (gdb) info b
+  Num     Type           Disp Enb Address            What
+  1       breakpoint     keep y   0x00000000004004fb in main at ex1.c:5
+    breakpoint already hit 1 time
+  5       read watchpoint keep y                      i
+    stop only if i==5
+  (gdb) c
+  Continuing.
+  0
+  1
+  2
+  3
+  4
+  Hardware read watchpoint 5: i
+
+  Value = 5
+  0x0000000000400523 in main () at ex1.c:5
+  5   for(i=0;i<7;++i)
